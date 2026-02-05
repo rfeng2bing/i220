@@ -1,0 +1,57 @@
++start 'lisa  simpson' 'bart simpson'
+Temporary breakpoint 1 at 0x12c6: file hello.c, line 35.
+Starting program: /import/home/rfeng2/i220/submit/lab2-sol/2-hello-upcase-args/hello 'lisa  simpson' 'bart simpson'
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Temporary breakpoint 1, main (argc=3, argv=0x7fffffffdb98) at hello.c:35
+35	  if (argc == 1) {
++b upcase_words
+Breakpoint 2 at 0x555555555199: file hello.c, line 13.
++c
+Continuing.
+
+Breakpoint 2, upcase_words (in=0x7fffffffdf87 "lisa  simpson", out=0x7fffffffda10 "\001") at hello.c:13
+13	  int inWord = 0;
++display in
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+14	  int n = strlen(in);
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+15	  for (int i = 0; i < n; i++) {
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+16	    if (!inWord && isalpha(in[i])) {
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+17	      out[i] = toupper(in[i]);
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+22	    inWord = isalpha(in[i]);
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+15	  for (int i = 0; i < n; i++) {
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+16	    if (!inWord && isalpha(in[i])) {
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+20	      out[i] = in[i];
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+22	    inWord = isalpha(in[i]);
+1: in = 0x7fffffffdf87 "lisa  simpson"
++n
+15	  for (int i = 0; i < n; i++) {
+1: in = 0x7fffffffdf87 "lisa  simpson"
++c
+Continuing.
+
+Breakpoint 2, upcase_words (in=0x7fffffffdf95 "bart simpson", out=0x7fffffffda10 "Lisa  Si4SUUUU") at hello.c:13
+13	  int inWord = 0;
+1: in = 0x7fffffffdf95 "bart simpson"
++c
+Continuing.
+[Inferior 1 (process 2721084) exited normally]
++q
