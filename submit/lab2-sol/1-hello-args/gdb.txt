@@ -41,6 +41,9 @@ Continuing.
 Breakpoint 2, say_hello (name=0x7fffffffdf6a "/import/home/rfeng2/i220/subm+l
 #0  say_hello (name=0x7fffffffdf6a "/import/home/rfeng2/i220/submit/lab2-sol/1-hello-args/hello") at hello.c:7
 7	  printf("hello %s\n", name);
++backtrace
+#0  say_hello (name=0x7fffffffdfa6 "bart") at hello.c:7
+#1  0x00005555555551ef in main (argc=3, argv=0x7fffffffdbb8) at hello.c:23
 +p name
 $3 = 0x7fffffffdf6a "/import/home/rfeng2/i220/submit/lab2-sol/1-hello-args/hello"
 +c
@@ -58,4 +61,4 @@ Continuing.
 Breakpoint 2, say_hello (name=0x7fffffffdfab "lisa") at hello.c:7
 7	  printf("hello %s\n", name);
 1: name = 0x7fffffffdfab "lisa"
-+q
++q+q
