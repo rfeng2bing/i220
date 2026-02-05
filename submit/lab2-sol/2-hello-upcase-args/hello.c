@@ -12,8 +12,8 @@ upcase_words(const char in[], char out[])
 {
   int inWord = 0;
   int n = strlen(in);
-  for (int i = 0; i < n; i++) {
-    if (!inWord && isalpha(in[i])) {
+  for (int i = 0; i <= n; i++) {
+    if (!inWord && isalpha(in[i]) && in[i] != '\0') {
       out[i] = toupper(in[i]);
     }
     else {
