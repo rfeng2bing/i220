@@ -33,8 +33,8 @@ main(int argc, const char *argv[])
     fprintf(stderr, "cannot read %s: %s\n", inName, strerror(errno));
     exit(1);
   }
-
-  FILE *out = argc < 3 ? stdout : fopen(argv[2], "w");
+  const char *outName = argv[2];
+  FILE *out = strcmp(outName, "-") == 0 ? stdout : fopen(argv[2], "w");
   if (!out) {
     fprintf(stderr, "cannot write %s: %s\n", argv[2], strerror(errno));
     exit(1);
