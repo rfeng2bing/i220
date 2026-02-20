@@ -43,9 +43,19 @@ main() {
   }
   printf("\n");
 
+  // print out every second int in vals[]
+  const unsigned int *ints = base;
+  const unsigned int *ints_end = end;
+  for (const unsigned int *p = ints; p < ints_end; p += 2) {
+    printf("ints[%td] = 0x%08x\n", p - ints, *p);
+  }
+  printf("\n");
 
-  //TODO: print out every second int in vals[]
-
-  //TODO: print out all vals as long's.
-
+  // print out all vals as long's
+  const unsigned long *longs = base;
+  const unsigned long *longs_end = end;
+  for (const unsigned long *p = longs; p < longs_end; p++) {
+    printf("longs[%td] = 0x%016lx\n", p - longs, *p);
+  }
+  printf("\n");
 }

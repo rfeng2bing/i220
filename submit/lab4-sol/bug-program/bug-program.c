@@ -31,6 +31,8 @@ add_key_value(KeyValueNode *keyValues, const char *k, int v)
   kv->value = v;
   kv->succ = keyValues;
 
+  free(s);
+
   return kv;
 }
 

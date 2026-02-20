@@ -55,3 +55,9 @@ Breakpoint 2, upcase_words (in=0x7fffffffdf95 "bart simpson", out=0x7fffffffda10
 Continuing.
 [Inferior 1 (process 2721084) exited normally]
 +q
+Exception ignored in: <gdb._GdbFile object at 0x7f15147c57d0>
+Traceback (most recent call last):
+  File "/usr/share/gdb/python/gdb/__init__.py", line 56, in flush
+    def flush(self):
+
+KeyboardInterrupt: 
