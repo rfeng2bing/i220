@@ -9,11 +9,36 @@ enum {
   BCD_MASK = (1 << BCD_BITS) - 1,
 };
 
-// TODO: define utility functions here
+static unsigned get_bcd_digit(Bcd bcd, int i) {
+  return (bcd >> (i*BCD_BITS)) & BCD_MASK;
+}
 
+static void set_bcd_digit(Bcd *bcd, int i, unsigned digit) {
+  Bcd mask = (Bcd)BCD_MASK << (i*BCD_BITS);
+  *bcd &= ~mask;
+  *bcd |= (Bcd)digit << (i*BCD_BITS);
+}
 
-//remove this line when the project is complete
-enum { TODO_ERR = -1 };
+static BcdError multiply_bcd_digit(Bcd n, unsigned digit, Bcd *bcd) {
+  Bcd result = 0;
+  unsigned carry = 0;
+
+  if (digit > 9) return BAD_VALUE_ERR;
+
+  for (int i = 0; i < MAX_BCD_DIGITS; ++i) {
+    unsigned bcd_digit = get_bcd_digit(n, i);
+    if (bcd_digit > 9) return BAD_VALUE_ERR;
+    
+    unsigned product = bcd_digit * digit + carry;
+    set_bcd_digit(&result, i, product % 10);
+    carry = product / 10;
+  }
+
+  if (carry > 0) return OVERFLOW_ERR;
+
+  *bcd = result;
+  return NO_ERR;
+}
 
 /** Set *bcd to BCD encoding of binary (which has normal binary
  * representation).
@@ -28,7 +53,19 @@ enum { TODO_ERR = -1 };
 BcdError
 binary_to_bcd(Binary value, Bcd *bcd)
 {
-  return TODO_ERR;
+  Bcd result = 0;
+  int i = 0;
+
+  while (value > 0) {
+    if (i >= MAX_BCD_DIGITS) return OVERFLOW_ERR;
+    unsigned digit = value % 10;
+    set_bcd_digit(&result, i, digit);
+    value /= 10;
+    i++;
+  }
+
+  *bcd = result;
+  return NO_ERR;
 }
 
 /** Set *binary to binary encoding of BCD value bcd.
@@ -44,7 +81,18 @@ binary_to_bcd(Binary value, Bcd *bcd)
 BcdError
 bcd_to_binary(Bcd bcd, Binary *binary)
 {
-  return TODO_ERR;
+  Binary result = 0;
+  Binary multiplier = 1;
+
+  for (int i = 0; i < MAX_BCD_DIGITS; ++i) {
+    unsigned digit = get_bcd_digit(bcd, i);
+    if (digit > 9) return BAD_VALUE_ERR;
+    result += digit * multiplier;
+    multiplier *= 10;
+  }
+
+  *binary = result;
+  return NO_ERR;
 }
 
 /** Set *bcd to BCD encoding of decimal number corresponding to string
@@ -58,7 +106,24 @@ bcd_to_binary(Bcd bcd, Binary *binary)
 BcdError
 str_to_bcd(const char *s, const char **p, Bcd *bcd)
 {
-  return TODO_ERR;
+  Bcd result = 0;
+  const char *c = s;
+
+  int digits = 0;
+  while (isdigit(*c)) {
+    if (digits >= MAX_BCD_DIGITS) return OVERFLOW_ERR;
+    unsigned digit = *c - '0';
+    
+    result = (result << BCD_BITS) | digit;
+    
+    digits++;
+    c++;
+  }
+
+  if (p != NULL) *p = c;
+
+  *bcd = result;
+  return NO_ERR;
 }
 
 /** Convert bcd to a NUL-terminated string in buf[] without any
@@ -78,7 +143,17 @@ str_to_bcd(const char *s, const char **p, Bcd *bcd)
 BcdError
 bcd_to_str(Bcd bcd, char buf[], size_t buf_size, int *len)
 {
-  return TODO_ERR;
+  for (int i = 0; i < MAX_BCD_DIGITS; ++i) {
+    unsigned digit = get_bcd_digit(bcd, i);
+    if (digit > 9) return BAD_VALUE_ERR;
+  }
+
+  int n = snprintf(buf, buf_size, "%" BCD_FORMAT_MODIFIER "x", bcd);
+  if (len != NULL) *len = n;
+
+  if (n < 0 || n >= buf_size) return OVERFLOW_ERR;
+
+  return NO_ERR;
 }
 
 /** Set *sum to the BCD representation of the sum of BCD int's n and n.
@@ -90,7 +165,23 @@ bcd_to_str(Bcd bcd, char buf[], size_t buf_size, int *len)
 BcdError
 bcd_add(Bcd n, Bcd m, Bcd *sum)
 {
-  return TODO_ERR;
+  Bcd result = 0;
+  unsigned carry = 0;
+
+  for (int i = 0; i < MAX_BCD_DIGITS; ++i) {
+    unsigned a = get_bcd_digit(n, i);
+    unsigned b = get_bcd_digit(m, i);
+    if (a > 9 || b > 9) return BAD_VALUE_ERR;
+
+    unsigned curr_sum = a + b + carry;
+    set_bcd_digit(&result, i, curr_sum % 10);
+    carry = curr_sum / 10;
+  }
+
+  if (carry > 0) return OVERFLOW_ERR;
+
+  *sum = result;
+  return NO_ERR;
 }
 
 
@@ -103,5 +194,28 @@ bcd_add(Bcd n, Bcd m, Bcd *sum)
 BcdError
 bcd_multiply(Bcd n, Bcd m, Bcd *prod)
 {
-  return TODO_ERR;
+  Bcd result = 0;
+
+  for (int i = 0; i < MAX_BCD_DIGITS; i++) {
+    if (get_bcd_digit(n, i) > 9) return BAD_VALUE_ERR;
+    if (get_bcd_digit(m, i) > 9) return BAD_VALUE_ERR;
+
+    unsigned digit = get_bcd_digit(m, i);
+    if (digit > 9) return BAD_VALUE_ERR;
+
+    Bcd temp = 0;
+    BcdError err = multiply_bcd_digit(n, digit, &temp);
+    if (err != NO_ERR) return err;
+
+    temp <<= i*BCD_BITS;
+
+    Bcd res;
+    err = bcd_add(result, temp, &res);
+    if (err != NO_ERR) return err;
+
+    result = res;
+  }
+
+  *prod = result;
+  return NO_ERR;
 }
