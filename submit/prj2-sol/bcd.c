@@ -16,7 +16,7 @@ static unsigned get_bcd_digit(Bcd bcd, int i) {
 static void set_bcd_digit(Bcd *bcd, int i, unsigned digit) {
   Bcd mask = (Bcd)BCD_MASK << (i*BCD_BITS);
   *bcd &= ~mask;
-  *bcd |= (Bcd)digit << (i*BCD_BITS);
+  *bcd |= digit << (i*BCD_BITS);
 }
 
 static BcdError multiply_bcd_digit(Bcd n, unsigned digit, Bcd *bcd) {
@@ -149,10 +149,9 @@ bcd_to_str(Bcd bcd, char buf[], size_t buf_size, int *len)
   }
 
   int n = snprintf(buf, buf_size, "%" BCD_FORMAT_MODIFIER "x", bcd);
-  if (len != NULL) *len = n;
-
   if (n < 0 || n >= buf_size) return OVERFLOW_ERR;
 
+  if (len != NULL) *len = n;
   return NO_ERR;
 }
 
