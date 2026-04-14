@@ -1,0 +1,9 @@
+Script started on 2026-03-26 14:05:23-04:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="123" LINES="16"]
+[?2004h]0;rfeng2@remote07: ~/i220/submit/lab9-sol[01;32mrfeng2@remote07[00m:[01;34m~/i220/submit/lab9-sol[00m$ ./inexact/float-inexact 
+[?2004l     0.1 * 10 == 1.00000011920928955078; sum-is-1: false
+[?2004h]0;rfeng2@remote07: ~/i220/submit/lab9-sol[01;32mrfeng2@remote07[00m:[01;34m~/i220/submit/lab9-sol[00m$ ./inexact/float-inexact [C[1P[1P[1P[1P[1P[1P
+[?2004l     0.1 * 10 == 0.99999999999999988898; sum-is-1: false
+[?2004h]0;rfeng2@remote07: ~/i220/submit/lab9-sol[01;32mrfeng2@remote07[00m:[01;34m~/i220/submit/lab9-sol[00m$ [?2004l
+exit
+
+Script done on 2026-03-26 14:05:52-04:00 [COMMAND_EXIT_CODE="0"]
