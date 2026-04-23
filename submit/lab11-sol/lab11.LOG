@@ -1,17 +1,21 @@
 Script started on 2026-04-16 03:31:35-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="167" LINES="18"]
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol[00m$ time ls
-[?2004l[0m[01;34mcoverage[0m  [01;34mint-search[0m  lab11.LOG  [01;34mmatmul-cache[0m  [01;34mparity[0m
+[?2004l
+[0m[01;34mcoverage[0m  [01;34mint-search[0m  lab11.LOG  [01;34mmatmul-cache[0m  [01;34mparity[0m
 
 real	0m0.008s
 user	0m0.002s
 sys	0m0.000s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol[00m$ time sleep 5
-[?2004l
+[?2004l
+
 real	0m5.003s
 user	0m0.001s
 sys	0m0.000s
-[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol[00m$ [7mtime wc -l `find /etc -type f 2>/dev/null` 2>/dev/null | tail[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctime wc -l `find /etc -type f 2>/dev/null` 2>/dev/null | tail
-[?2004l      23 /etc/sysfs.conf
+[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol[00m$ [7mtime wc -l `find /etc -type f 2>/dev/null` 2>/dev/null | tail[27m
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctime wc -l `find /etc -type f 2>/dev/null` 2>/dev/null | tail
+[?2004l
+      23 /etc/sysfs.conf
        1 /etc/timezone
        1 /etc/slurm/plugstack.conf
      174 /etc/slurm/slurm.conf
@@ -25,15 +29,35 @@ sys	0m0.000s
 real	0m5.606s
 user	0m0.025s
 sys	0m0.258s
+[?2004h]0;rfeng2@remote05: ~/i220/submit[01;32mrfeng2@remote05[00m:[01;34m~/i220/submit[00m$ [7mtime wc -l `find /etc -type f 2>/dev/null` 2>/dev/null | tail[27m
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctime wc -l `find /etc -type f 2>/dev/null` 2>/dev/null | tail
+[?2004l
+      23 /etc/sysfs.conf
+       1 /etc/timezone
+       1 /etc/slurm/plugstack.conf
+     174 /etc/slurm/slurm.conf
+     150 /etc/hosts
+      41 /etc/ts.conf
+      47 /etc/ld.so.cache
+       1 /etc/debian_version
+    5501 /etc/dpkg-list
+  271736 total
+
+real	0m2.222s
+user	0m0.022s
+sys	0m0.151s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol[00m$ cd parity/
-[?2004l[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/parity[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/parity[00m$ make
-[?2004lcc -g -Wall -std=c2x -O1   -c -o parity-c.o parity-c.c
+[?2004l
+[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/parity[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/parity[00m$ make
+[?2004l
+cc -g -Wall -std=c2x -O1   -c -o parity-c.o parity-c.c
 cc -g -Wall -std=c2x -O1   -c -o main.o main.c
 cc   parity-c.o main.o   -o parity-c
 cc -g -Wall -std=c2x -O1   -c -o parity-s.o parity-s.c
 cc   parity-s.o main.o   -o parity-s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/parity[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/parity[00m$ [7m./parity-c -d 10[27m./parity-c -d 10
-[?2004l67: 0
+[?2004l
+67: 0
 c6: 1
 69: 1
 73: 0
@@ -45,7 +69,8 @@ ec: 0
 cd: 0
 3
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/parity[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/parity[00m$ [7m./parity-s -d 10[27m./parity-s -d 10
-[?2004l67: 0
+[?2004l
+67: 0
 c6: 1
 69: 1
 73: 0
@@ -57,46 +82,55 @@ ec: 0
 cd: 0
 3
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/parity[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/parity[00m$ [7mtime ./parity-c 100000000[27mtime ./parity-c 100000000
-[?2004l50003700
+[?2004l
+50003700
 
 real	0m2.236s
 user	0m2.233s
 sys	0m0.000s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/parity[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/parity[00m$ [7mtime ./parity-s 100000000[27mtime ./parity-s 100000000
-[?2004l49997794
+[?2004l
+49997794
 
 real	0m1.033s
 user	0m1.031s
 sys	0m0.000s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/parity[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/parity[00m$ [7mcd ../matmul-cache[27mcd ../matmul-cache
-[?2004l[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/matmul-cache[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/matmul-cache[00m$ make
-[?2004lcc -g -Wall -std=c2x -O1   -c -o main.o main.c
+[?2004l
+[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/matmul-cache[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/matmul-cache[00m$ make
+[?2004l
+cc -g -Wall -std=c2x -O1   -c -o main.o main.c
 cc -g -Wall -std=c2x -O1   -c -o simple-matmul.o simple-matmul.c
 cc main.o simple-matmul.o  -o simple-matmul
 cc -g -Wall -std=c2x -O1   -c -o transpose-matmul.o transpose-matmul.c
 cc main.o transpose-matmul.o  -o transpose-matmul
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/matmul-cache[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/matmul-cache[00m$ [7m./simple-matmul 4 1[27m./simple-matmul 4 1
-[?2004l222116499432056181 702728943884103282 976657005958358887 208305681995216427 
+[?2004l
+222116499432056181 702728943884103282 976657005958358887 208305681995216427 
 2176158101476803373 2167723090326847514 3402130874294067226 1227295663821196557 
 4864941978546427201 4488031060263621944 7270457362798475378 2871901060616694345 
 7687094395803773517 2148127355329309527 5999033094807106893 4122693175977677129 
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/matmul-cache[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/matmul-cache[00m$ [7m./transpose-matmul 4 1[27m./transpose-matmul 4 1
-[?2004l222116499432056181 702728943884103282 976657005958358887 208305681995216427 
+[?2004l
+222116499432056181 702728943884103282 976657005958358887 208305681995216427 
 2176158101476803373 2167723090326847514 3402130874294067226 1227295663821196557 
 4864941978546427201 4488031060263621944 7270457362798475378 2871901060616694345 
 7687094395803773517 2148127355329309527 5999033094807106893 4122693175977677129 
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/matmul-cache[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/matmul-cache[00m$ [7mtime ./simple-matmul 1500 1[27mtime ./simple-matmul 1500 1
-[?2004l
+[?2004l
+
 real	0m2.320s
 user	0m2.311s
 sys	0m0.004s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/matmul-cache[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/matmul-cache[00m$ [7mtime ./transpose-matmul 1500 1[27mtime ./transpose-matmul 1500 1
-[?2004l
+[?2004l
+
 real	0m1.866s
 user	0m1.858s
 sys	0m0.004s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/matmul-cache[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/matmul-cache[00m$ [7mfor s in `seq 2000 1000 4000`; do echo -n "*** Size $s: simple"; time ./simple-matmul $s 1 ; echo ; echo -n "*** [27m[7mS[27m[7mize $s: transpose"; time ./transpose-matmul $s 1 ; echo ; done[27m[Afor s in `seq 2000 1000 4000`; do echo -n "*** Size $s: simple"; time ./simple-matmul $s 1 ; echo ; echo -n "*** Size $s: transpose"; time ./transpose-matmul $s 1 ; echo ; done
-[?2004l*** Size 2000: simple
+[?2004l
+*** Size 2000: simple
 real	0m7.068s
 user	0m7.033s
 sys	0m0.028s
@@ -127,40 +161,51 @@ user	0m37.205s
 sys	0m0.052s
 
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/matmul-cache[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/matmul-cache[00m$ cd [K[K[Kcd ../int-search/
-[?2004l[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/int-search[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/int-search[00m$ make
-[?2004lcc -g -Wall -std=c2x -O1   -c -o linear-search.o linear-search.c
+[?2004l
+[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/int-search[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/int-search[00m$ make
+[?2004l
+cc -g -Wall -std=c2x -O1   -c -o linear-search.o linear-search.c
 cc -g -Wall -std=c2x -O1   -c -o main.o main.c
 cc -g -Wall -std=c2x -O1   -c -o int_compare.o int_compare.c
 cc   linear-search.o main.o int_compare.o   -o linear-search
 cc -g -Wall -std=c2x -O1   -c -o binary-search.o binary-search.c
 cc   binary-search.o main.o int_compare.o   -o binary-search
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/int-search[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/int-search[00m$ [7m./linear-search 100 1[27m./linear-search 100 1
-[?2004l[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/int-search[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/int-search[00m$ [7mtime ./linear-search 2000 2000[27mtime ./linear-search 2000 2000
-[?2004l
+[?2004l
+[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/int-search[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/int-search[00m$ [7mtime ./linear-search 2000 2000[27mtime ./linear-search 2000 2000
+[?2004l
+
 real	0m3.372s
 user	0m3.369s
 sys	0m0.000s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/int-search[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/int-search[00m$ [7mtime ./binary-search 2000 2000[27mtime ./binary-search 2000 2000
-[?2004l
+[?2004l
+
 real	0m0.184s
 user	0m0.181s
 sys	0m0.000s
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/int-search[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/int-search[00m$ cd ../coverage/
-[?2004l[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ make
-[?2004lcc -g -Wall -std=c2x -fprofile-arcs -ftest-coverage    coverage.c   -o coverage
+[?2004l
+[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ make
+[?2004l
+cc -g -Wall -std=c2x -fprofile-arcs -ftest-coverage    coverage.c   -o coverage
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ ./coverage 
-[?2004l200 2000 2999
+[?2004l
+200 2000 2999
 compute(200, 2000, 2999) = 730
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7mgcov coverage.gcda[27mgcov coverage.gcda
-[?2004lFile 'coverage.c'
+[?2004l
+File 'coverage.c'
 Lines executed:45.83% of 24
 Creating 'coverage.c.gcov'
 
 Lines executed:45.83% of 24
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7m./coverage < test.dat[27m./coverage < test.dat
-[?2004lbash: test.dat: No such file or directory
+[?2004l
+bash: test.dat: No such file or directory
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7m./coverage < test.dat[27m./coverage < test.dat
-[?2004lcompute(200, 200, 200) = 1320
+[?2004l
+compute(200, 200, 200) = 1320
 compute(200, 200, 2000) = 652
 compute(200, 2000, 200) = 652
 compute(200, 2000, 2000) = 730
@@ -169,13 +214,15 @@ compute(2000, 200, 2000) = 652
 compute(2000, 2000, 200) = 652
 compute(2000, 2000, 2000) = 730
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7mgcov coverage.gcda[27mgcov coverage.gcda
-[?2004lFile 'coverage.c'
+[?2004l
+File 'coverage.c'
 Lines executed:62.50% of 24
 Creating 'coverage.c.gcov'
 
 Lines executed:62.50% of 24
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7mcat coverage.c.gcov[27mcat coverage.c.gcov
-[?2004l        -:    0:Source:coverage.c
+[?2004l
+        -:    0:Source:coverage.c
         -:    0:Graph:coverage.gcno
         -:    0:Data:coverage.gcda
         -:    0:Runs:2
@@ -238,8 +285,10 @@ Lines executed:62.50% of 24
         2:   57:  return 0;
         -:   58:}
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7mrm coverage.gcda[27mrm coverage.gcda
-[?2004l[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7m./coverage < test.dat[27m./coverage < test.dat
-[?2004lcompute(300, 200, 200) = 1549
+[?2004l
+[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7m./coverage < test.dat[27m./coverage < test.dat
+[?2004l
+compute(300, 200, 200) = 1549
 compute(300, 200, 500) = 1049
 compute(300, 400, 200) = 1563
 compute(300, 400, 500) = 971
@@ -248,13 +297,15 @@ compute(200, 200, 1000) = 652
 compute(200, 500, 200) = 652
 compute(200, 500, 500) = 730
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7mgcov coverage.gcda[27mgcov coverage.gcda
-[?2004lFile 'coverage.c'
+[?2004l
+File 'coverage.c'
 Lines executed:100.00% of 24
 Creating 'coverage.c.gcov'
 
 Lines executed:100.00% of 24
 [?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [7mcat coverage.c.gcov[27mcat coverage.c.gcov
-[?2004l        -:    0:Source:coverage.c
+[?2004l
+        -:    0:Source:coverage.c
         -:    0:Graph:coverage.gcno
         -:    0:Data:coverage.gcda
         -:    0:Runs:1
@@ -316,7 +367,8 @@ Lines executed:100.00% of 24
         -:   56:  }
         1:   57:  return 0;
         -:   58:}
-[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [?2004l
+[?2004h]0;rfeng2@remote03: ~/i220/submit/lab11-sol/coverage[01;32mrfeng2@remote03[00m:[01;34m~/i220/submit/lab11-sol/coverage[00m$ [?2004l
+
 exit
 
 Script done on 2026-04-16 03:44:22-04:00 [COMMAND_EXIT_CODE="0"]
