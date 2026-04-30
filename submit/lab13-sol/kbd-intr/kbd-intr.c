@@ -8,6 +8,15 @@ void loop(void *mem_) {
   KbdIntr *mem = mem_;
   do {
     pause();
-    //TODO
+    int c = mem->in;
+    if (islower(c)) {
+      mem->out = toupper(c);
+    }
+    else if (isupper(c)) {
+      mem->out = tolower(c);
+    }
+    else {
+      mem->out = c;
+    }
   } while (1);
 }

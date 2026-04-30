@@ -22,7 +22,7 @@ static int
 do_copy(const char *inName, FILE *in, const char *outName, FILE *out)
 {
   int c;
-  while ((c = fgetc(in)) != EOF) {
+  while ((c = fgetc_err(in)) != EOF) {
     if (fputc(c, out) == EOF) {
       fprintf(stderr, "error writing to %s: %s\n", outName, strerror(errno));
       return 1; //return rather than exit to ensure files closed

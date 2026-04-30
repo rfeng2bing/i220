@@ -4,5 +4,13 @@
 
 void loop(void *mem_) {
   ConnectData *mem = mem_;
-  //TODO
+  int prev = mem->in;
+  mem->out = prev;
+  for (;;) {
+    int cur = mem->in;
+    if (cur != prev) {
+      mem->out = cur;
+      prev = cur;
+    }
+  }
 }
